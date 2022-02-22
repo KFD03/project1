@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Web calculator of bar- or bat-mitzvah date</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">  
+    <link rel="stylesheet" href="{% static 'css/hebcount.css' %}">
+</head>
+<body>
+  <div>
+  <h2>Vyplňte datum narození do formuláře:</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        
+        <label for="year">Rok</label>
+        <input type="number" class="form-control" id="year" name="year">
+        </div>
+        <div class="form-group">
+        <label for="month">Měsíc</label>
+        <input type="number" class="form-control" id="month" name="month" min="1" max="12">
+        </div>
+        <div class="form-group">
+        <label for="day">Den</label>
+        <input type="number" class="form-control" id="day" name="day" min="1" max="31">
+        </div>
+        <div class="form-check">
+        <label for="sex">Jedná se o dívku?</label>
+        <input type="checkbox" id="sex" name="sex">
+        </div>
+        <div class="form-check">
+        <label for="sunset">Je osoba narozená po západu slunce?</label>
+        <input type="checkbox" id="sunset" name="sunset">
+        </div>
+        <input type="submit"><br><br>
+        
+    </form>
+    </div>
+    <div>
+    <table class="table">
+        
+        <tr>
+          <th>Přesný den bar/bat micva:</th>
+          <th>Šabat následující po bar/bat micva:</th>
+          <th>Paraša</th>
+        </tr>
+        <tr>
+          <td>{{ datum }}</td>
+          <td>{{ shabbat }}</td>
+          <td>{{ parasha }}</td>
+        </tr>
+    </table>
+    </div>
+    <div>
+      <p>
+        Kalkulačka používá Python knihovnu pyluach, která byla upravena pro českou transliteraci parašiot a svátků. Bar micva připadá na den 13.narozenin
+        chlapce podle hebrejského kalendáře. Bat micva připadá na den 12.narozenin dívky. Pokud z nějakého důvodu chcete počítat datum bat micva na 13.narozeniny
+        dívky, postupujte, jako by se jednalo o chlapce. 
+      </p>
+      <p>
+        V židovském kalendáři není stále jednoznačně vyřešena otázka, zda nový den začíná v okamžiku, kdy slunce zapadne za obzor (<i>škia</i>) a nebo ve chvíli, kdy už je tma a
+        na nebi jsou viditelné hvězdy (<i>cejt hakochavim</i>). Tento mezičas se nazývá <i>"bejn hašmašot"</i>. Pokud se dítě narodilo v tomto mezičase, je dobré se poradit s rabínem, který 
+        den bude jeho/její bar/bat micva.
+      </p>
+      <p>
+        Děti narozené během měsíce Adar II v přestupném roce slaví, v případě že rok jejich bar/bat micva není přestupný, v měsíci Adaru. Děti, které jsou 
+        narozené v měsíci Adaru a jejich bar/bat micva je v přestupném roce, slaví v měsíci Adaru II.
+      </p>
+    </div>
+</body>
+</html>
