@@ -1,6 +1,6 @@
 # barmicva kalkulacka
 
-from . import dates, parshios, hebrewcal, gematria, utils
+from pyluach import dates, parshios, hebrewcal, gematria, utils
 
 """count of the bar/bat mitzvah date, Shabbat followingthe date and the corresponding parasha using pyluach"""
 class Bmicva:
