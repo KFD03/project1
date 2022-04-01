@@ -57,7 +57,14 @@ parasa_cesky = {
     'Nitzavim':'Nicavim',
     'Vayeilech':'Vajelech', 
     'Haazinu':'Haazinu', 
-    'Vezos Haberachah':'Vezot Habracha'
+    'Vezos Haberachah':'Vezot Habracha',
+    'Vayakhel, Pekudei':'Vajakhel-Pekudej', 
+    'Tazria, Metzora':'Tazria-Mecora', 
+    'Acharei Mos, Kedoshim':'Acharej Mot-Kedošim', 
+    'Behar, Bechukosai':'Behar-Bechukotaj',
+    'Chukas, Balak':'Chukat-Balak', 
+    'Mattos, Masei':'Matot-Masej', 
+    'Nitzavim, Vayeilech':'Nicavim-Vajelech' 
 }
 
 mesic_cesky={
