@@ -2,6 +2,107 @@
 
 from pyluach import dates, parshios, hebrewcal, gematria, utils
 
+#translations to czech
+parasa_cesky = {
+    'Bereishis':'Berešit', 
+    'Noach':'Noach', 
+    'Lech Lecha':'Lech Lecha', 
+    'Vayeira':'Vajera', 
+    'Chayei Sarah':'Chajej Sara', 
+    'Toldos':'Toldot',
+    'Vayeitzei':'Vajece', 
+    'Vayishlach':'Vajišlach', 
+    'Vayeishev':'Vaješev', 
+    'Mikeitz':'Mikec', 
+    'Vayigash':'Vajigaš', 
+    'Vayechi':'Vajechi',
+    'Shemos':'Šemot', 
+    "Va'eira":"Va'era", 
+    'Bo':'Bo', 
+    'Beshalach':'Bešalach', 
+    'Yisro':'Yitro', 
+    'Mishpatim':'Mišpatim', 
+    'Terumah':'Teruma',
+    'Tetzaveh':'Tecave', 
+    'Ki Sisa':'Ki Tisa', 
+    'Vayakhel':'Vajakhel', 
+    'Pekudei':'Pekudej', 
+    'Vayikra':'Vajikra', 
+    'Tzav':'Cav', 
+    'Shemini':'Šemini',
+    'Tazria':'Tazria', 
+    'Metzora':'Mecora', 
+    'Acharei Mos':'Acharej Mot', 
+    'Kedoshim':'Kedošim', 
+    'Emor':'Emor', 
+    'Behar':'Behar',
+    'Bechukosai':'Bechukotaj', 
+    'Bamidbar':'Bamidbar', 
+    'Nasso':'Naso', 
+    "Beha'aloscha":"Beha'alotecha", 
+    'Shelach':'Šlach', 
+    'Korach':'Korach',
+    'Chukas':'Chukat', 
+    'Balak':'Balak', 
+    'Pinchas':'Pinchas', 
+    'Mattos':'Matot', 
+    'Masei':'Masej', 
+    'Devarim':'Devarim', 
+    "Va'eschanan":"Va'etchanan",
+    'Eikev':'Ekev', 
+    "Re'eh":"Re'e", 
+    'Shoftim':'Šoftim', 
+    'Ki Seitzei':'Ki Tece', 
+    'Ki Savo':'Ki Tavo', 
+    'Nitzavim':'Nicavim',
+    'Vayeilech':'Vajelech', 
+    'Haazinu':'Haazinu', 
+    'Vezos Haberachah':'Vezot Habracha'
+}
+
+mesic_cesky={
+    'Nissan':'Nisan', 
+    'Iyar':'Iyar', 
+    'Sivan':'Sivan', 
+    'Tammuz':'Tamuz', 
+    'Av':'Av', 
+    'Elul':'Elul', 
+    'Tishrei':'Tišri', 
+    'Cheshvan':'Chešvan',
+    'Kislev':'Kislev', 
+    'Teves':'Tevet', 
+    'Shevat':'Švat', 
+    'Adar':'Adar', 
+    'Adar 1':'Adar 1', 
+    'Adar 2':'Adar 2'
+}
+
+svatek_cesky={
+     'Rosh Hashana':'Roš Hašana', 
+     'Yom Kippur':'Jom Kipur', 
+     'Succos':'Sukot', 
+     'Shmini Atzeres':'Šmini Aceret', 
+     'Simchas Torah':'Simchat Tora',
+    'Chanuka':'Chanuka', 
+    "Tu B'shvat":"Tu Bišvat", 
+    'Purim Katan':'Purim Katan', 
+    'Purim':'Purim', 
+    'Shushan Purim':'Šušan Purim',
+    'Pesach':'Pesach', 
+    'Pesach Sheni':'Pesach šeni', 
+    "Lag Ba'omer":"Lag Ba'omer", 
+    'Shavuos':'Šavuot', 
+    "Tu B'av":"Tu B'av"
+}
+
+pust_cesky={
+    'Tzom Gedalia':'Com Gedalja', 
+    '10 of Teves':'10. Tevet', 
+    'Taanis Esther':'Taanit Esther', 
+    '17 of Tamuz':'17. Tamuz', 
+    '9 of Av':'9. Av'
+}
+
 """count of the bar/bat mitzvah date, Shabbat followingthe date and the corresponding parasha using pyluach"""
 class Bmicva:
     #year, month and day of birth of the person
@@ -66,9 +167,10 @@ class Bmicva:
     def parasha(self):
         cteni=parshios.getparsha_string(self.date)
         if cteni==None:
-            return self.date.holiday()
+            reading=self.date.holiday()
+            return (svatek_cesky.get(reading))
         else:
-            return (cteni)
+            return (parasa_cesky.get(cteni))
 """
 barmicva=Bmicva(1999,4,3,False, False)
 barmicva.to_hebcal()
